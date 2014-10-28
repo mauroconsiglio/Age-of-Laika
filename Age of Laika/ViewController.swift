@@ -30,6 +30,27 @@ class ViewController: UIViewController {
         let conversionConstant = 7
         dogYearsLabel.hidden = false
         dogYearsLabel.text = "\(yearsFromTextField * conversionConstant) human years"
+        dogYearsLabel.textColor = UIColor.redColor()
+        enterHumanYearsTextField.resignFirstResponder()
+        enterHumanYearsTextField.text = ""
+    }
+    
+    @IBAction func convertToRealDogYearsButtonPressed(sender: UIButton)
+    {
+        let yearsFromTextField = enterHumanYearsTextField.text.toInt()
+        
+        if yearsFromTextField == nil {
+            dogYearsLabel.hidden = false
+            dogYearsLabel.text = "Please insert age in human years"
+        }
+        else if yearsFromTextField! <= 2 {
+            dogYearsLabel.text = "\(Double(yearsFromTextField!) * 10.5) human years"
+        }
+        else {
+            dogYearsLabel.text = "\((yearsFromTextField! - 2) * 4 + 21) human years"
+        }
+        dogYearsLabel.hidden = false
+        dogYearsLabel.textColor = UIColor.greenColor()
         enterHumanYearsTextField.resignFirstResponder()
         enterHumanYearsTextField.text = ""
     }
